@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Warrior",
+    "health": 100,
+    "mana": 25,
+    "abilities": [
+      {
+        "name": "Attack",
+        "kind": "attack",
+        "damage": 5,
+        "duration": null,
+        "cooldown": 0
+      },
+      {
+        "name": "Bash",
+        "kind": "stun",
+        "damage": 0,
+        "duration": 2,
+        "cooldown": 3
+      }
+    ]
+  },
+  {
+    "name": "Mage",
+    "health": 50,
+    "mana": 100
+  },
+  {
+    "name": "Ranger",
+    "health": 75,
+    "mana": 40
+  }
+]
