@@ -1,3 +1,5 @@
+from enum import Enum
+
 class AbilityList(object):
   """
   A list of abilities for an entity.
@@ -6,6 +8,9 @@ class AbilityList(object):
   def __init__(self):
     self.abilities = []
     self.cooldowns = []
+
+  def __getitem__(self, key):
+    return self.abilities[key]
 
   def append(self, ability):
     self.abilities.append(ability)
@@ -18,13 +23,13 @@ class AbilityList(object):
 
     Throws an exception if the ability @ index is not available.
     """
-    if index >= len(abilities):
+    if index >= len(self.abilities):
       raise Exception('No ability at index: {0}'.format(index))
 
     if self.cooldowns[index] != 0:
       return False
 
-    a = abilities[index]
+    a = self.abilities[index]
     self.cooldowns[index] = a.cooldown
     return True
 
@@ -39,3 +44,8 @@ class Ability(object):
     self.damage = damage
     self.duration = duration
     self.cooldown = cooldown
+
+class AbilityKind(Enum):
+  Attack = 1
+  Stun = 2
+  Bleed = 3

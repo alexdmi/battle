@@ -20,7 +20,7 @@ class StatusList(object):
     for i in range(len(self.durations)):
       index = i - deleted
       self.durations[index] -= 1
-      if self.durations[index] = 0:
+      if self.durations[index] == 0:
         del self.durations[index]
         del self.statuses[index]
         deleted += 1
@@ -35,7 +35,3 @@ class Status(object):
     self.kind = kind
     self.damage = damage
     self.duration = duration
-
-class StatusKind(Enum):
-  Stun = 1
-  Bleed = 2

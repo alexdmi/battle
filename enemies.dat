@@ -2,11 +2,21 @@
   {
     "name": "Skeleton",
     "health": 100,
-    "mana": 0
+    "mana": 0, 
+    "abilities":[
+      {
+        "name": "Attack",
+        "kind": "Attack",
+        "damage": 5,
+        "duration": null,
+        "cooldown": 0
+      }
+    ]
   },
   {
     "name": "Minotaur",
     "health": 150,
     "mana": 0
+
   }
 ]

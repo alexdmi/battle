@@ -6,14 +6,14 @@
     "abilities": [
       {
         "name": "Attack",
-        "kind": "attack",
+        "kind": "Attack",
         "damage": 5,
         "duration": null,
         "cooldown": 0
       },
       {
         "name": "Bash",
-        "kind": "stun",
+        "kind": "Stun",
         "damage": 0,
         "duration": 2,
         "cooldown": 3

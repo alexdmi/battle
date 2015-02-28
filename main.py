@@ -9,22 +9,20 @@ def select_entity(prompt, entities):
 	choice = int(input("Select your {0}: ".format(prompt)))
 	return entities[choice-1]
 
-def player_turn(player):
+def player_turn(player, enemy):
 	while True:
 		i = 1
 		for a in player.abilities:
 			print("{0}. {1}".format(i, a.name))
 			i += 1
 		choice = int(input("Select your ability: "))
-		didWork = player.abilites.use(choice-1)
+		didWork = player.abilities.use(choice-1)
 
-		# Affect the enemy
-		ability.use_on(player, enemy)
+		if not didWork:
+			continue
 
-		ability.use_on(enemy, player)
-
-		if didWork:
-			break
+		player.use_ability(enemy, player.abilities[choice-1])
+		break
 
 def enemy_turn(enemy):
 	pass
@@ -36,7 +34,7 @@ print("{0} vs {1}".format(player.name, enemy.name))
 isPlayerTurn = True
 while True:
 	if isPlayerTurn:
-		player_turn(player)
+		player_turn(player, enemy)
 		isPlayerTurn = False
 	else:
 		enemy_turn(enemy)
