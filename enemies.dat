@@ -10,6 +10,14 @@
         "damage": 5,
         "duration": null,
         "cooldown": 0
+
+      },
+      {
+        "name": "Club",
+        "kind": "Stun",
+        "damage": 1,
+        "duration": 2,
+        "cooldown": 4
       }
     ]
   },

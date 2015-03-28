@@ -16,13 +16,44 @@ class Entity(object):
 
     def use_ability(self, enemy, ability):
         if ability.kind == AbilityKind.Attack:
-            damage = min(enemy.health, ability.damage)
-            enemy.health -= damage
-            print("{0} has done {1} damage to {2}\n{2} has {3} health remaining".format(self.name, damage, enemy.name, enemy.health))
+            self.damage_ability(enemy, ability)
+
         elif ability.kind == AbilityKind.Stun:
-            pass
+            if ability.damage > 0:
+                self.damage_ability(enemy, ability)
+            enemy.debuffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
+            print("{0} is now stunned!".format(enemy.name))
+
         elif ability.kind == AbilityKind.Bleed:
-            pass
+            enemy.debuffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
+            print("{0} has started to bleed".format(enemy.name))
+
+        elif ability.kind == AbilityKind.Heal:
+            self.buffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
+            print("{0} has begun to heal themselves!".format(self.name))
+
+    def damage_ability(self, enemy, ability):
+        damage = min(enemy.health, ability.damage)
+        enemy.health -= damage
+        print("{0} has done {1} damage to {2}".format(self.name, damage, enemy.name))
+
+    def apply_buffs(self, enemy):
+        for buff in self.buffs:
+            if buff.kind == AbilityKind.Heal:
+                self.health += buff.damage
+                print("{0} has healed for {1}".format(self.name, buff.damage))
+
+    def apply_debuffs(self, enemy):
+        incapacitated = False
+        for debuff in self.debuffs:
+            if debuff.kind == AbilityKind.Stun:
+                print("{0} is still stunned".format(self.name))
+                incapacitated = True
+            elif debuff.kind == AbilityKind.Bleed:
+                self.health -= debuff.damage
+                print("{0} bleeds for {1}".format(self.name, debuff.damage))
+
+        return incapacitated
 
 def load(filename):
     data = None

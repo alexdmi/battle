@@ -14,7 +14,7 @@
       {
         "name": "Bash",
         "kind": "Stun",
-        "damage": 0,
+        "damage": 3,
         "duration": 2,
         "cooldown": 3
       }
@@ -23,7 +23,23 @@
   {
     "name": "Mage",
     "health": 50,
-    "mana": 100
+    "mana": 100,
+    "abilities": [
+       {
+        "name": "Attack",
+        "kind": "Attack",
+        "damage": 4,
+        "duration": null,
+        "cooldown": 0
+      },
+      {
+        "name": "Heal",
+        "kind": "Heal",
+        "damage": 10,
+        "duration": 2,
+        "cooldown": 7
+      }
+    ]
   },
   {
     "name": "Ranger",

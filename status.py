@@ -7,7 +7,7 @@ class StatusList(object):
 
   def append(self, status):
     self.statuses.append(status)
-    self.durations.append(status.duration)
+    self.durations.append(status.duration+1)
 
   def search(self, kind):
     for status in self.statuses:
@@ -15,7 +15,7 @@ class StatusList(object):
         return True
     return False
 
-  def tick():
+  def tick(self):
     deleted = 0 
     for i in range(len(self.durations)):
       index = i - deleted
@@ -29,8 +29,14 @@ class StatusList(object):
     for i in self.statuses:
       yield i
 
+  def __len__(self):
+    return len(self.statuses)
+
+  def __getitem__(self, key):
+    return self.statuses[key]
+
 class Status(object):
-  def __init__(self, kind, damage, duration):
+  def __init__(self, name, kind, damage, duration):
     self.name = name
     self.kind = kind
     self.damage = damage

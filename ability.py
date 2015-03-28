@@ -4,17 +4,19 @@ class AbilityList(object):
   """
   A list of abilities for an entity.
   """
-
   def __init__(self):
     self.abilities = []
     self.cooldowns = []
-
-  def __getitem__(self, key):
-    return self.abilities[key]
-
+  
   def append(self, ability):
     self.abilities.append(ability)
     self.cooldowns.append(0)
+
+  def on_cooldown(self, index):
+    if index >= len(self.abilities):
+      raise Exception('No ability at index: {0}'.format(index))
+
+    return self.cooldowns[index]
 
   def use(self, index):
     """
@@ -30,12 +32,23 @@ class AbilityList(object):
       return False
 
     a = self.abilities[index]
-    self.cooldowns[index] = a.cooldown
+    self.cooldowns[index] = a.cooldown + 1
     return True
+
+  def tick(self):
+    for i in range(len(self.cooldowns)):
+      if self.cooldowns[i] > 0:
+        self.cooldowns[i] -= 1
 
   def __iter__(self):
     for i in self.abilities:
       yield i
+
+  def __len__(self):
+    return len(self.abilities)
+
+  def __getitem__(self, key):
+    return self.abilities[key]
 
 class Ability(object):
   def __init__(self, name, kind, damage, duration, cooldown):
@@ -49,3 +62,4 @@ class AbilityKind(Enum):
   Attack = 1
   Stun = 2
   Bleed = 3
+  Heal = 4
