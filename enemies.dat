@@ -10,7 +10,6 @@
         "damage": 5,
         "duration": null,
         "cooldown": 0
-
       },
       {
         "name": "Club",
@@ -18,6 +17,27 @@
         "damage": 1,
         "duration": 2,
         "cooldown": 4
+      },
+      {
+        "name": "Bone Spear",
+        "kind": "Attack",
+        "damage": 7,
+        "duration": null,
+        "cooldown": 3
+      },
+      {
+        "name": "Underworld Power",
+        "kind": "Heal",
+        "damage": 15,
+        "duration": 1,
+        "cooldown": 11
+      },
+      {
+        "name": "Call of the bretheren",
+        "kind": "Attack",
+        "damage": 25,
+        "duration": null,
+        "cooldown": 35
       }
     ]
   },

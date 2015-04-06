@@ -28,6 +28,14 @@ class Entity(object):
             enemy.debuffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
             print("{0} has started to bleed".format(enemy.name))
 
+        elif ability.kind == AbilityKind.Burn:
+            enemy.debuffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
+            print("{0} has got a nasty burn...".format(enemy.name))
+
+        elif ability.kind == AbilityKind.Lifelink:
+            self.buffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
+            print("{0} has started to drain life from {1}".format(self.name, enemy.name))
+
         elif ability.kind == AbilityKind.Heal:
             self.buffs.append(Status(ability.name, ability.kind, ability.damage, ability.duration))
             print("{0} has begun to heal themselves!".format(self.name))
@@ -42,7 +50,11 @@ class Entity(object):
             if buff.kind == AbilityKind.Heal:
                 self.health += buff.damage
                 print("{0} has healed for {1}".format(self.name, buff.damage))
-
+            elif buff.kind == AbilityKind.Lifelink:
+                enemy.health -= buff.damage
+                self.health += buff.damage
+                print("{0} has stolen {1} life from {2}".format(self.name, buff.damage, enemy.name))
+    
     def apply_debuffs(self, enemy):
         incapacitated = False
         for debuff in self.debuffs:
@@ -52,6 +64,10 @@ class Entity(object):
             elif debuff.kind == AbilityKind.Bleed:
                 self.health -= debuff.damage
                 print("{0} bleeds for {1}".format(self.name, debuff.damage))
+            elif debuff.kind == AbilityKind.Burn:
+                self.health -= debuff.damage
+                print("{0} has started to take damage form they're burn! They take {1} damage.".format(self.name, debuff.damage))
+
 
         return incapacitated
 

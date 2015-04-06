@@ -14,14 +14,35 @@
       {
         "name": "Bash",
         "kind": "Stun",
-        "damage": 3,
+        "damage": 2,
         "duration": 2,
-        "cooldown": 3
+        "cooldown": 5
+      },
+      {
+        "name": "Sheild Smash",
+        "kind": "Attack",
+        "damage": 10,
+        "duration": null,
+        "cooldown": 5
+      },
+      {
+        "name": "Critical Strike",
+        "kind": "Bleed",
+        "damage": 6,
+        "duration": 3,
+        "cooldown": 10
+      },
+      {
+        "name": "Finishing Blow",
+        "kind": "Bleed",
+        "damage": 7,
+        "duration": 4,
+        "cooldown": 40
       }
     ]
   },
   {
-    "name": "Mage",
+    "name": "Fire Mage",
     "health": 50,
     "mana": 100,
     "abilities": [
@@ -35,15 +56,73 @@
       {
         "name": "Heal",
         "kind": "Heal",
-        "damage": 10,
+        "damage": 8,
         "duration": 2,
+        "cooldown": 8
+      },
+      {
+        "name": "Fire Blast",
+        "kind": "Burn",
+        "damage": 5,
+        "duration": 3,
+        "cooldown": 9
+      },
+      {
+        "name": "Fiery Strike",
+        "kind": "Attack",
+        "damage": 11,
+        "duration": null,
         "cooldown": 7
+      },
+      {
+        "name": "Fire Mages Secret",
+        "kind": "Burn",
+        "damage": 7,
+        "duration": 5,
+        "cooldown": 45
       }
     ]
   },
   {
-    "name": "Ranger",
+    "name": "Ice Ranger",
     "health": 75,
-    "mana": 40
+    "mana": 40,
+    "abilities": [
+       {
+        "name": "Attack",
+        "kind": "Attack",
+        "damage": 4,
+        "duration": null,
+        "cooldown": 0
+      },
+      {
+        "name": "Heal",
+        "kind": "Heal",
+        "damage": 6,
+        "duration": 2,
+        "cooldown": 9
+      },
+      {
+        "name": "Frozen Arrow",
+        "kind": "Attack",
+        "damage": 10,
+        "duration": null,
+        "cooldown": 11
+      },
+      {
+        "name": "Life Gain",
+        "kind": "Lifelink",
+        "damage": 11,
+        "duration": null,
+        "cooldown": 7
+      },
+      {
+        "name": "Deep Freeze",
+        "kind": "Stun",
+        "damage": 10,
+        "duration": 10,
+        "cooldown": 50
+      }
+    ]
   }
 ]

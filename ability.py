@@ -63,3 +63,5 @@ class AbilityKind(Enum):
   Stun = 2
   Bleed = 3
   Heal = 4
+  Burn = 5
+  Lifelink = 6
